@@ -411,5 +411,11 @@ extern	 int optreset;		/* getopt(3) external variable */
 extern	 char *suboptarg;	/* getsubopt(3) external variable */
 #endif
 
+/*
+ * Funkcje z zadania
+ */
+int changeparent(void);
+pid_t getoppid(pid_t pid);
+
 __END_DECLS
 #endif /* !_UNISTD_H_ */
