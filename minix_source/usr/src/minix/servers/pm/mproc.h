@@ -70,6 +70,8 @@ EXTERN struct mproc {
   char mp_name[PROC_NAME_LEN];	/* process name */
 
   int mp_magic;			/* sanity check, MP_MAGIC */
+
+  int mp_first_parent   /* index of first parent process */
 } mproc[NR_PROCS];
 
 /* Flag values */

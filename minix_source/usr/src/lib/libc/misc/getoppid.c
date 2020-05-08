@@ -5,10 +5,13 @@
 #include <unistd.h>
 #include <minix/rs.h>
 
-pid_t pm_hello_world(pid_t pid)
+pid_t getoppid(pid_t pid)
 {
 	message m;
+	m.m1_i1 = pid;
 	endpoint_t pm_ep;
 	minix_rs_lookup("pm", &pm_ep);
 	_syscall(pm_ep, PM_GETOPPID, &m);
+
+	return 123; // tutaj jakos returna ogarnac
 }
