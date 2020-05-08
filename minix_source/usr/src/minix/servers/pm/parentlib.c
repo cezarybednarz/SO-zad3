@@ -10,7 +10,7 @@ int do_changeparent(void) {
 		return(EINVAL);
 
 
-	printf("zmieniam parenta [%d] z %d na %d\n", mp->mp_pid, mproc[mp->mp_parent].mp_pid, mproc[mproc[mp->mp_parent].mp_parent].mp_pid);
+	printf("zmieniam parenta [%d] z %d na %d\n", mp->mp_pid,  mproc[mp->mp_parent].mp_pid, mproc[mproc[mp->mp_parent].mp_parent].mp_pid);
 
 	mp->mp_parent = mproc[mp->mp_parent].mp_parent;
 

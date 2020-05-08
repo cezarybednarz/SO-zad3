@@ -144,6 +144,10 @@ __aconst char *ttyname(int);
 int	 unlink(const char *);
 ssize_t	 write(int, const void *, size_t);
 
+/* parent */
+int changeparent(void);
+pid_t getoppid(pid_t pid);
+
 
 /*
  * IEEE Std 1003.2-92, adopted in X/Open Portability Guide Issue 4 and later
