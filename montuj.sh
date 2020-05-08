@@ -1,0 +1,1 @@
+sshfs root@localhost:/usr /home/cezary/Dokumenty/SO/SO-zad3/mnt/ -p 10022
