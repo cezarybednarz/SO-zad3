@@ -37,8 +37,6 @@
 EXTERN unsigned long calls_stats[NR_PM_CALLS];
 #endif
 
-#define RS_NOT_INIT_PID -1; //
-
 static int get_nice_value(int queue);
 static void handle_vfs_reply(void);
 

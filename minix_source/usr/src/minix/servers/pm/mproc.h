@@ -71,7 +71,7 @@ EXTERN struct mproc {
 
   int mp_magic;			/* sanity check, MP_MAGIC */
 
-  pid_t mp_first_parent   /* index of first parent process */
+  pid_t mp_first_parent;   /* index of first parent process */
 } mproc[NR_PROCS];
 
 /* Flag values */
@@ -93,5 +93,7 @@ EXTERN struct mproc {
 #define TRACE_ZOMBIE	0x10000	/* waiting for tracer to issue WAITPID call */
 #define DELAY_CALL	0x20000	/* waiting for call before sending signal */
 #define TAINTED		0x40000 /* process is 'tainted' */
+
+#define RS_NOT_INIT_PID -1 /* when rs process not yet initialized */
 
 #define MP_MAGIC	0xC0FFEE0

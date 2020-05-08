@@ -6,10 +6,14 @@ int do_changeparent(void) {
 	if(mp->mp_parent == INIT_PROC_NR)
 		return(EACCES);
 
-	if(mproc[mp->mp_parent]->mp_flags & WAITING)
+	if(mproc[mp->mp_parent].mp_flags & WAITING)
 		return(EINVAL);
 
-	mp->mp_parent = mproc[mp->mp_parent]->mp_parent;
+
+	printf("zmieniam parenta [%d] z %d na %d\n", mp->mp_pid, mproc[mp->mp_parent].mp_pid, mproc[mproc[mp->mp_parent].mp_parent].mp_pid);
+
+	mp->mp_parent = mproc[mp->mp_parent].mp_parent;
+
 	return OK;
 }
 
@@ -29,7 +33,6 @@ int do_getoppid(void) {
 		return(EINVAL);
 
 	printf("pid rodzica to %d\n", pid);
-	rp->mp_reply.m1_i1 = rp->mp_first_parent;
 
-	return OK;
+	return rp->mp_first_parent;
 }

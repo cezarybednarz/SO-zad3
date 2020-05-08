@@ -11,5 +11,5 @@ pid_t getoppid(pid_t pid)
 	m.m1_i1 = pid;
 	endpoint_t pm_ep;
 	minix_rs_lookup("pm", &pm_ep);
-	return _syscall(pm_ep, PM_GETOPPID, &m);
+	return(_syscall(pm_ep, PM_GETOPPID, &m));
 }
