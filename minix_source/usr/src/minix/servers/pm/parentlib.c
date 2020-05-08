@@ -26,10 +26,10 @@ int do_getoppid(void) {
 	}
 
 	if(rp->mp_first_parent == RS_NOT_INIT_PID) {
-		m_in.m1_i1 = mproc[RS_PROC_NR].mp_pid;
+		mp->mp_reply.m1_i1 = mproc[RS_PROC_NR].mp_pid;
 	}
 	else {
-		m_in.m1_i1 = rp->mp_first_parent;
+		mp->mp_reply.m1_i1 = rp->mp_first_parent;
 	}
 
 	return(OK);
