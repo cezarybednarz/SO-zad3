@@ -201,7 +201,7 @@ static int sef_cb_init_fresh(int UNUSED(type), sef_init_info_t *UNUSED(info))
 		else {					/* system process */
   			if(ip->proc_nr == RS_PROC_NR) {
   				rmp->mp_parent = INIT_PROC_NR;
-  				rmp->mp_first_parent = RS_NOT_INIT_PID;
+  				rmp->mp_first_parent = INIT_PID;
   			}
   			else {
   				rmp->mp_parent = RS_PROC_NR;

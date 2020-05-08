@@ -8,9 +8,8 @@ int do_changeparent(void) {
 	}
 
 	if(mproc[mp->mp_parent].mp_flags & WAITING) {
-		return(EINVAL);
+		return(EPERM);
 	}
-
 
 	mp->mp_parent = mproc[mp->mp_parent].mp_parent;
 
@@ -20,20 +19,18 @@ int do_changeparent(void) {
 
 int do_getoppid(void) {
 	pid_t pid = m_in.m1_i1;
-	register struct mproc *rp;
-	int found = 0;
-	for (rp = &mproc[0]; rp < &mproc[NR_PROCS]; rp++) {
-		if(rp->mp_pid == pid) {
-			found = 1;
-			break;
-		}
-	}
+	register struct mproc *rp = find_proc(pid);
 
-	if(!found || (rp->mp_first_parent == RS_NOT_INIT_PID)) {
+	if(!rp) {
 		return(EINVAL);
 	}
 
-	m_in.m1_i1 = rp->mp_first_parent;
+	if(rp->mp_first_parent == RS_NOT_INIT_PID) {
+		m_in.m1_i1 = mproc[RS_PROC_NR].mp_pid;
+	}
+	else {
+		m_in.m1_i1 = rp->mp_first_parent;
+	}
 
 	return(OK);
 }
