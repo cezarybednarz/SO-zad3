@@ -37,6 +37,8 @@
 EXTERN unsigned long calls_stats[NR_PM_CALLS];
 #endif
 
+#define RS_NOT_INIT_PID -1; //
+
 static int get_nice_value(int queue);
 static void handle_vfs_reply(void);
 
@@ -190,6 +192,7 @@ static int sef_cb_init_fresh(int UNUSED(type), sef_init_info_t *UNUSED(info))
   			 * that mp_parent always points to a valid slot number.
   			 */
   			rmp->mp_parent = INIT_PROC_NR;
+  			rmp->mp_first_parent = INIT_PID;
   			rmp->mp_procgrp = rmp->mp_pid = INIT_PID;
 			rmp->mp_flags |= IN_USE; 
 
@@ -200,9 +203,11 @@ static int sef_cb_init_fresh(int UNUSED(type), sef_init_info_t *UNUSED(info))
 		else {					/* system process */
   			if(ip->proc_nr == RS_PROC_NR) {
   				rmp->mp_parent = INIT_PROC_NR;
+  				rmp->mp_first_parent = RS_NOT_INIT_PID;
   			}
   			else {
   				rmp->mp_parent = RS_PROC_NR;
+  				rmp->mp_first_parent = RS_NOT_INIT_PID;
   			}
   			rmp->mp_pid = get_free_pid();
 			rmp->mp_flags |= IN_USE | PRIV_PROC;

@@ -71,7 +71,7 @@ EXTERN struct mproc {
 
   int mp_magic;			/* sanity check, MP_MAGIC */
 
-  int mp_first_parent   /* index of first parent process */
+  pid_t mp_first_parent   /* index of first parent process */
 } mproc[NR_PROCS];
 
 /* Flag values */
