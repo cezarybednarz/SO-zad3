@@ -25,7 +25,7 @@ int do_getoppid(void) {
 		return(EINVAL);
 	}
 
-	if(rp->mp_first_parent == RS_NOT_INIT_PID) {
+	if(rp->mp_first_parent == RS_NOT_INIT_PID) { /* rs is parent, but not yet initialized */
 		mp->mp_reply.m1_i1 = mproc[RS_PROC_NR].mp_pid;
 	}
 	else {

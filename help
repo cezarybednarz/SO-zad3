@@ -5,8 +5,13 @@ make install;
 
 
 cd /usr/src/minix/servers/pm &&
+make clean &&
 make &&
 make install;
 
+cd /usr/src/releasetools &&
+make do-hdboot &&
+reboot;
 
 
+diff -rupN /home/cezary/Dokumenty/SO/SO-zad3/minix_source_copy/minix_source/usr/ /home/cezary/Dokumenty/SO/SO-zad3/minix_source/usr/ > cb406099.patch
