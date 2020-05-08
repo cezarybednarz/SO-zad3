@@ -10,7 +10,5 @@ int changeparent(void)
 	message m;
 	endpoint_t pm_ep;
 	minix_rs_lookup("pm", &pm_ep);
-	_syscall(pm_ep, PM_CHANGE_PARENT, &m);
-
-	return 0; // tutaj zmienic
+	return _syscall(pm_ep, PM_CHANGE_PARENT, &m);
 }
